@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (Request.IsAuthenticated)
+{
+    <div>
+        你好，<div>@User.Identity.Name</div>
+        <a href="/home/signout">退出</a>
+    </div>
+}
+else
+{
+    <div>未登录</div>
+    if (!string.IsNullOrEmpty(ViewBag.ReturnUrl))
+    {
+        <a href="/home/signin?returnUrl=@ViewBag.ReturnUrl ">登录</a>
+    }
+    else
+    {
+        <a href="/home/signin">登录</a>
+    }
+}
+
+<a href="/home/about">关于</a>
+<a href="/home/news">新闻</a>
